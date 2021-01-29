@@ -1,11 +1,10 @@
 import './App.css';
 import NameForm from './components/NameForm';
-import Translate from './components/Translate';
 import React, {useState} from 'react';
 import TranslatedName from './components/TranslatedName';
 
 function App() {
-  const [newName, setNewName] = useState([]);
+  const [newName, setNewName] = useState("");
   const translatedArray = [];
   let i = 0;
   const onSubmit = (person) => {
@@ -40,12 +39,13 @@ function App() {
         console.log(translatedArray)
       }
       if (e === "e") {
-        translatedArray[i] = null
+        translatedArray[i] = "Ⲉ"
         i++
         console.log(translatedArray)
       }
       if (e === "E") {
-        translatedArray[i] = "E"
+        // Seemingly Elon's favorite letter
+        translatedArray[i] = "X"
         i++
       }
       if (e === "f" || e === "F") {
@@ -64,7 +64,7 @@ function App() {
         console.log(translatedArray)
       }
       if (e === "i" || e === "I") {
-        translatedArray[i] = " -Zip2 "
+        translatedArray[i] = "-Zip2 "
         i++
         console.log(translatedArray)
       }
@@ -86,7 +86,8 @@ function App() {
         console.log(translatedArray)
       }
       if (e === "m" || e === "M") {
-        translatedArray[i] = " A-12 "
+        // First letter of Elon's last name, last letter of the alphabet
+        translatedArray[i] = " AZ-26 "
         i++
         console.log(translatedArray)
       }
@@ -97,12 +98,14 @@ function App() {
         console.log(translatedArray)
       }
       if (e === "o" || e === "O") {
-        translatedArray[i] = " A-12 "
+        // Symbol of Grimes' song "Omega"
+        translatedArray[i] = " ≈Ω≈ "
         i++
         console.log(translatedArray)
       }
       if (e === "p" || e === "P") {
-        translatedArray[i] = " A-12 "
+        // Greek Pi
+        translatedArray[i] = "Π"
         i++
         console.log(translatedArray)
       }
@@ -113,21 +116,25 @@ function App() {
         console.log(translatedArray)
       }
       if (e === "r" || e === "R") {
+        // Greek
         translatedArray[i] = "Ρ"
         i++
         console.log(translatedArray)
       }
       if (e === "s" || e === "S") {
-        translatedArray[i] = " A-12 "
+        // Sigma
+        translatedArray[i] = " Σ σ/ς "
         i++
         console.log(translatedArray)
       }
       if (e === "t" || e === "T") {
-        translatedArray[i] = " A-12 "
+        // Grimes record label she signed to in 2010
+        translatedArray[i] = "4AD"
         i++
         console.log(translatedArray)
       }
       if (e === "u" || e === "U") {
+        // No logic here
         translatedArray[i] = "B"
         i++
         console.log(translatedArray)
@@ -138,7 +145,7 @@ function App() {
         console.log(translatedArray)
       }
       if (e === "w" || e === "W") {
-        // Old English
+        // Old English 'wynn'
         translatedArray[i] = "Ƿ"
         i++
         console.log(translatedArray)
@@ -161,23 +168,27 @@ function App() {
         i++
         console.log(translatedArray)
       }
-
-
+    const muskName = translatedArray.join("")
+    setNewName(muskName + " Musk" )
     })
-    
-
   }
 
   return (
-    <div className="App">
-      <NameForm 
+    <>
+    <div className="container">
+      <NameForm className="header"
         title = "Find out what Elon Musk would've named you!"
         onSubmit = {onSubmit}
       /> 
-      <TranslatedName 
-        name = {}
+      </div>
+      <div>
+      {newName &&
+      <TranslatedName className="musk-name"
+        name = {newName}
       />
+       }
     </div>
+    </>
   );
 }
 

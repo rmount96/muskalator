@@ -1,10 +1,13 @@
 import React from 'react';
+import '../App.css';
 
-const TranslatedName = (props) {
+const TranslatedName = (props) => {
     return (
+        <div className="name-div">
         {
-            props
+            <p className="new-name">Your name would be <br />{props.name}</p>
         }
+        </div>
     )
 }
 
